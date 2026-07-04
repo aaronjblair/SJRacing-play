@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0b0e14" />
+    <link rel="icon" type="image/png" href="./superjay-32.png" />
+    <title>Super Jay Racing</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #0b0e14;
+      }
+      #renderCanvas {
+        width: 100%;
+        height: 100%;
+        display: block;
+        outline: none;
+        touch-action: none;
+      }
+      /* Boot splash — a REAL app-build progress bar (build-order step 8).
+         Lives in index.html so it paints before any JS loads. */
+      #loading {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        background: radial-gradient(120% 90% at 50% 30%, #131a2a 0%, #0b0e14 62%, #07090e 100%);
+        transition: opacity 0.55s ease;
+        font-family: system-ui, sans-serif;
+      }
+      #loading.done {
+        opacity: 0;
+        pointer-events: none;
+      }
+      #loading img {
+        width: min(38vmin, 210px);
+        height: auto;
+        border-radius: 8%; /* gently rounded corners on the memorial artwork */
+        filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.6));
+      }
+      #loading .lt {
+        color: #fff;
+        font-weight: 800;
+        font-size: clamp(20px, 4.2vmin, 30px);
+        letter-spacing: 0.14em;
+      }
+      #loading .lt span {
+        color: #ff8a2a;
+      }
+      #loadwrap {
+        width: min(64vw, 380px);
+        height: 10px;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        overflow: hidden;
+      }
+      #loadbar {
+        width: 0%;
+        height: 100%;
+        border-radius: 6px;
+        background: linear-gradient(90deg, #c2410c, #ff8a2a);
+        transition: width 0.3s ease;
+      }
+      #loadlabel {
+        color: rgba(255, 255, 255, 0.62);
+        font-size: 13px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+    </style>
+    <script type="module" crossorigin src="/SJRacing-play/assets/index-Bw1KhNWf.js"></script>
+    <link rel="modulepreload" crossorigin href="/SJRacing-play/assets/rolldown-runtime-DK3Fl9T5.js">
+    <link rel="modulepreload" crossorigin href="/SJRacing-play/assets/performanceConfigurator-DWV-Ob9G.js">
+    <link rel="modulepreload" crossorigin href="/SJRacing-play/assets/logger-Cp8JTZW5.js">
+    <link rel="modulepreload" crossorigin href="/SJRacing-play/assets/shaderStore-D-XQlhUT.js">
+    <link rel="modulepreload" crossorigin href="/SJRacing-play/assets/abstractEngine-D_E1k7IT.js">
+    <link rel="modulepreload" crossorigin href="/SJRacing-play/assets/dataBuffer-C-wqV4qF.js">
+    <link rel="modulepreload" crossorigin href="/SJRacing-play/assets/thinEngine-DMrdl_YI.js">
+    <link rel="modulepreload" crossorigin href="/SJRacing-play/assets/typeStore-Cu_sj2zM.js">
+    <link rel="modulepreload" crossorigin href="/SJRacing-play/assets/math.scalar.functions-Bcxiuh2E.js">
+    <link rel="modulepreload" crossorigin href="/SJRacing-play/assets/math.vector-BLg5jByN.js">
+    <link rel="modulepreload" crossorigin href="/SJRacing-play/assets/instantiationTools-BKnCAr2Z.js">
+    <link rel="modulepreload" crossorigin href="/SJRacing-play/assets/postprocess.vertex-CqEQ0GqR.js">
+  </head>
+  <body>
+    <div id="loading">
+      <img src="./superjay-32.png" alt="Super Jay Racing" />
+      <div class="lt">SUPER JAY <span>RACING</span></div>
+      <div id="loadwrap"><div id="loadbar"></div></div>
+      <div id="loadlabel">Warming up…</div>
+    </div>
+    <canvas id="renderCanvas"></canvas>
+  </body>
+</html>
